@@ -15,4 +15,4 @@ inputs:
     matched:
       description: 'Whether or not any of the paths were matched'
     pull_number:
-      descri[tion: 'pull request number'
+      description: 'pull request number'
