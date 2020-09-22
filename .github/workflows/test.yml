@@ -1,12 +1,3 @@
-# GitHub Action: Detect PR file changes
-Detects whether or not a file in a provided path has been changed.
-
-Useful for preventing steps in workflows, can provide multiple paths as regular expressions
-
-## Example Usage
-
-```yaml
-
 name: Test Workflow
 
 on: [pull_request]
@@ -20,13 +11,10 @@ jobs:
     steps:
       - name: Get Changed Files
         id: changed
-        uses: citrix-workspace/g11n-mas-test@master
+        uses: citrix-workspace/g11n-mas-test@PR_changed_files
         with:
           paths: ^main.js
 
       - name: Echo Match
         if: steps.changed.outputs.matched == 'true'
         run: echo Matched
-
-```
-
