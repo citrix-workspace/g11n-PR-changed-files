@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Get Changed Files
         id: changed
-        uses: citrix-workspace/g11n-mas-test@master
+        uses: citrix-workspace/g11n-mas-test@PR_changed_files
         with:
           paths: ^main.js
 
