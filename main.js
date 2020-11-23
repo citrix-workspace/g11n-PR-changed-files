@@ -31,7 +31,7 @@ async function doIt() {
       let resource_file = file.filename;
       let metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
       console.log(metadata_path);
-      const buffer = await readFileAsync("../../metadata.json");
+      const buffer = await readFileAsync("../metadata.json");
       const json = JSON.parse(buffer.toString());
       console.log(json);
       
