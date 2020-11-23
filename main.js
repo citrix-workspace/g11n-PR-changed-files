@@ -23,16 +23,18 @@ async function doIt() {
   console.log(`Searching for: ${paths}`);
 
   const files = await octokit.pulls.listFiles({owner, repo, pull_number});
-  
+  const project =  process.cwd();
   
   for(let file of files.data){
     console.log(file.filename);
     if (paths.some(path => path.test(file.filename))){
       let resource_file = file.filename;
-      let metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
-      console.log(metadata_path);
-      const buffer = await readFileAsync("./package.json");
-      const json = JSON.parse(buffer.toString());
+      let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
+      console.log(project);
+      console.log(releted_metadata_path);
+      const metadata_path = path.resolve(project, releted_metadata_path);
+      const data = await fs.promises.readFile(metadata_path);
+      var json = JSON.parse(data);
       console.log(json);
       
     }
