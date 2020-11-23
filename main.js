@@ -27,19 +27,22 @@ async function doIt() {
   const project =  process.cwd();
   
   for(let file of files.data){
-    console.log(file.filename);
-    if (paths.some(path => path.test(file.filename))){
-      let resource_file = file.filename;
-      let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
-      console.log(project);
-      console.log(releted_metadata_path);
-      const metadata_path = path.resolve(project, releted_metadata_path);
-      const data = await fs.promises.readFile(metadata_path);
-      var json = JSON.parse(data);
-      console.log(json);
-      
+    try {
+      console.log(file.filename);
+      if (paths.some(path => path.test(file.filename))){
+        let resource_file = file.filename;
+        let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
+        console.log(project);
+        console.log(releted_metadata_path);
+        const metadata_path = path.resolve(project, releted_metadata_path);
+        const data = await fs.promises.readFile(metadata_path);
+        var json = JSON.parse(data);
+        console.log(json);
+
+      }
+    } catch (error) {
+      console.log(error.message);
     }
-    
   }
   
   const matched = files.data
