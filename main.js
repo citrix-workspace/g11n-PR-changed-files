@@ -28,8 +28,9 @@ async function doIt() {
       let resource_file = file.filename;
       let metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
       console.log(metadata_path);
-      var json = require(metadata_path); //(with path)
-      console.log(json);
+      $.getJSON(metadata_path, function(json) {
+        console.log(json); // this will show the info it in firebug console
+      });
     }
     
   }
