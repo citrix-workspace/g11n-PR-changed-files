@@ -24,6 +24,12 @@ async function doIt() {
   
   for(let file of files.data){
     console.log(file.filename);
+    if (paths.some(path => path.test(file.filename))){
+      let resource_file = file.filename;
+      let metadata_path = resource_file.replace("i18n/.*\.json","metadata.json")
+      console.log(metadata_path);
+    }
+    
   }
   
   const matched = files.data
