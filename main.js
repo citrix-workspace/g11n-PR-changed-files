@@ -1,8 +1,8 @@
 const gh = require('@actions/github');
 const {Octokit} = require("@octokit/action");
 const core = require('@actions/core');
-import fs from 'fs';
-import util from 'util';
+const fs = require('fs');
+const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 async function doIt() {
