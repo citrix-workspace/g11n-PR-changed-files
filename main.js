@@ -26,7 +26,7 @@ async function doIt() {
     console.log(file.filename);
     if (paths.some(path => path.test(file.filename))){
       let resource_file = file.filename;
-      let metadata_path = resource_file.replace(/i18n/.*\.json/g,"metadata.json")
+      let metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
       console.log(metadata_path);
     }
     
