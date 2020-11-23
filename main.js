@@ -4,6 +4,7 @@ const core = require('@actions/core');
 const fs = require('fs');
 const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
+const path = require('path');
 
 async function doIt() {
   const paths = core.getInput('paths').split(' ').map(_ => new RegExp(_));
