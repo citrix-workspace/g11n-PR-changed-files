@@ -1,6 +1,9 @@
 const gh = require('@actions/github');
 const {Octokit} = require("@octokit/action");
 const core = require('@actions/core');
+import fs from 'fs';
+import util from 'util';
+const readFileAsync = util.promisify(fs.readFile);
 
 async function doIt() {
   const paths = core.getInput('paths').split(' ').map(_ => new RegExp(_));
@@ -28,8 +31,9 @@ async function doIt() {
       let resource_file = file.filename;
       let metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
       console.log(metadata_path);
-      var obj = require('../../metadata.json');
-      console.log(obj);
+      const buffer = await readFileAsync(metadata_path);
+      const json = JSON.parse(buffer.toString());
+      console.log(json);
       
     }
     
