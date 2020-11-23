@@ -34,7 +34,7 @@ async function doIt() {
         let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
         console.log(project);
         console.log(releted_metadata_path);
-        const metadata_path = path.resolve(project, releted_metadata_path);
+        const metadata_path = path.resolve(project, resource_file );
         const data = await fs.promises.readFile(metadata_path);
         var json = JSON.parse(data);
         console.log(json);
