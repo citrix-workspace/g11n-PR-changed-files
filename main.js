@@ -39,6 +39,10 @@ async function doIt() {
         const data = await fs.promises.readFile(metadata_path);
         var json = JSON.parse(data);
         console.log(json);
+        console.log(json.hasOwnProperty("categories"));
+        console.log(json["categories"]);
+        console.log(json["categories"].includes("WEB_SERVICES"));
+        console.log(json["categories"].includes("PREVIEW"));
         if (!json.hasOwnProperty("categories") || json["categories"].includes("WEB_SERVICES") || json["categories"].includes("PREVIEW")){
           matched = true;
         }
