@@ -13,7 +13,7 @@ async function doIt() {
 
   const {number} = gh.context.payload;
   const pull_number = number;
-  const matched = false;
+  var matched = false;
 
   if (!pull_number) {
     console.log('This action was initiated by something other than a pull_request defaulting to false');
