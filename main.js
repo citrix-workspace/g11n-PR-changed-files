@@ -40,10 +40,12 @@ async function doIt() {
         var json = JSON.parse(data);
         console.log(json);
         console.log(json.hasOwnProperty("categories"));
+        console.log(!json.hasOwnProperty("categories"));
+        console.log((!json.hasOwnProperty("categories")));
         console.log(json["categories"]);
         console.log(json["categories"].includes("WEB_SERVICES"));
         console.log("hi"+json["categories"].includes("PREVIEW"));
-        if (!json.hasOwnProperty("categories")){
+        if (!(json.hasOwnProperty("categories"))){
           matched = true;
           console.log("ok"+matched);
         }else{
