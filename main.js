@@ -42,9 +42,9 @@ async function doIt() {
         console.log(json.hasOwnProperty("categories"));
         console.log(!json.hasOwnProperty("categories"));
         console.log((!json.hasOwnProperty("categories")));
-        console.log(json["categories"]);
-        console.log(json["categories"].includes("WEB_SERVICES"));
-        console.log("hi"+json["categories"].includes("PREVIEW"));
+//         console.log(json["categories"]);
+//         console.log(json["categories"].includes("WEB_SERVICES"));
+//         console.log("hi"+json["categories"].includes("PREVIEW"));
         if (!(json.hasOwnProperty("categories"))){
           matched = true;
           console.log("ok"+matched);
