@@ -13,6 +13,7 @@ async function doIt() {
 
   const {number} = gh.context.payload;
   const pull_number = number;
+  const matched = false;
 
   if (!pull_number) {
     console.log('This action was initiated by something other than a pull_request defaulting to false');
@@ -34,10 +35,13 @@ async function doIt() {
         let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
         console.log(project);
         console.log(releted_metadata_path);
-        const metadata_path = path.resolve(project, resource_file );
+        const metadata_path = path.resolve(project, releted_metadata_path );
         const data = await fs.promises.readFile(metadata_path);
         var json = JSON.parse(data);
         console.log(json);
+        if (!json.hasOwnProperty("categories") || json["categories"].includes("WEB_SERVICES") || json["categories"].includes("PREVIEW")){
+          matched = true;
+        }
 
       }
     } catch (error) {
@@ -45,11 +49,11 @@ async function doIt() {
     }
   }
   
-  const matched = files.data
-    .map(_ => _.filename)
-    .some(filename =>
-      paths.some(path => path.test(filename))
-    );
+//   const matched = files.data
+//     .map(_ => _.filename)
+//     .some(filename =>
+//       paths.some(path => path.test(filename))
+//     );
 
   console.log(`Matched: ${matched}`);
 
