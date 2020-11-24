@@ -43,10 +43,13 @@ async function doIt() {
         console.log(json["categories"]);
         console.log(json["categories"].includes("WEB_SERVICES"));
         console.log(json["categories"].includes("PREVIEW"));
-        if (!json.hasOwnProperty("categories") || json["categories"].includes("WEB_SERVICES") || json["categories"].includes("PREVIEW")){
+        if (!json.hasOwnProperty("categories")){
           matched = true;
+        }else{
+          if(json["categories"].includes("WEB_SERVICES") || json["categories"].includes("PREVIEW")){
+            matched = true;
+          }
         }
-
       }
     } catch (error) {
       console.log(error.message);
