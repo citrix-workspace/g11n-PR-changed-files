@@ -33,19 +33,17 @@ async function doIt() {
       if (paths.some(path => path.test(file.filename))){
         let resource_file = file.filename;
         let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
-        console.log(project);
-        console.log(releted_metadata_path);
         const metadata_path = path.resolve(project, releted_metadata_path );
         const data = await fs.promises.readFile(metadata_path);
         var json = JSON.parse(data);
 
         if (!(json.hasOwnProperty("categories"))){
           matched = true;
-          console.log(file.filename);
+          console.log("changed resource file in this PR:"+file.filename);
         }else{
           if(json["categories"].includes("WEB_SERVICES") || json["categories"].includes("PREVIEW")){
             matched = true;
-            console.log(file.filename);
+            console.log("changed resource file in this PR:"+file.filename);
           }
         }
       }
