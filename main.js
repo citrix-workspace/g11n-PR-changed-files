@@ -29,7 +29,7 @@ async function doIt() {
   
   for(let file of files.data){
     try {
-      console.log(file.filename);
+//       console.log(file.filename);
       if (paths.some(path => path.test(file.filename))){
         let resource_file = file.filename;
         let releted_metadata_path = resource_file.replace(/i18n[\s\S]*\.json/g,"metadata.json")
@@ -38,19 +38,14 @@ async function doIt() {
         const metadata_path = path.resolve(project, releted_metadata_path );
         const data = await fs.promises.readFile(metadata_path);
         var json = JSON.parse(data);
-        console.log(json);
-        console.log(json.hasOwnProperty("categories"));
-        console.log(!json.hasOwnProperty("categories"));
-        console.log((!json.hasOwnProperty("categories")));
-//         console.log(json["categories"]);
-//         console.log(json["categories"].includes("WEB_SERVICES"));
-//         console.log("hi"+json["categories"].includes("PREVIEW"));
+
         if (!(json.hasOwnProperty("categories"))){
           matched = true;
-          console.log("ok"+matched);
+          console.log(file.filename);
         }else{
           if(json["categories"].includes("WEB_SERVICES") || json["categories"].includes("PREVIEW")){
             matched = true;
+            console.log(file.filename);
           }
         }
       }
