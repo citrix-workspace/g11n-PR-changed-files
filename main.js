@@ -2,11 +2,9 @@ const gh = require('@actions/github');
 const {Octokit} = require("@octokit/action");
 const core = require('@actions/core');
 const fs = require('fs');
-const util = require('util');
-const readFileAsync = util.promisify(fs.readFile);
 const path = require('path');
 
-async function doIt() {
+async function run {
   const paths = core.getInput('paths').split(' ').map(_ => new RegExp(_));
   const octokit = new Octokit();
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
@@ -67,5 +65,5 @@ async function doIt() {
 }
 
 
-doIt();
+run();
 
