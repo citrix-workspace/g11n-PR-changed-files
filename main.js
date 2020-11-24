@@ -4,7 +4,7 @@ const core = require('@actions/core');
 const fs = require('fs');
 const path = require('path');
 
-async function run {
+async function run() {
   const paths = core.getInput('paths').split(' ').map(_ => new RegExp(_));
   const octokit = new Octokit();
   const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
